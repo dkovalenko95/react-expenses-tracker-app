@@ -1,17 +1,19 @@
+import "./ExpenseDate";
+import ExpenseDate from "./ExpenseDate";
+
 import "./ExpenseItem.css"
 
 function ExpenseItem(props) {
-  const month = props.date.toLocaleString("en-US", { month: "long" });
-  const year = props.date.getFullYear();
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
 
-  // instead of hardcoded data React is using "props" concept.
+  // here in ExpanseItem comp we use "props" to receive data from App(expenses array), then we pass the data(specifically "date") to ExpanseDate via ExpenseItem through props; 
+  // in other words - from App to ExpenseDate through ExpenseItem using "props"! ---> from parent to child!
+
+  console.log(props.date); /* --> shows exact expenses array from App.js */
+
   return (<div className="expense-item">
-    <div>
-      <div>{month}</div>
-      <div>{year}</div>
-      <div>{day}</div>
-    </div>
+
+    <ExpenseDate date={props.date}/>
+
     <div className="expense-item__description">
       <h2>{props.title}</h2>
       <div className="expense-item__price">${props.amount}</div>
