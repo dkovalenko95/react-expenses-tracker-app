@@ -2,6 +2,7 @@
 // import React from 'react'; ---> React import was necessary in the past versions(we had to put this import in every component) --> we can still use it to emphasize that React is still being used under the hood here.
 import React from "react";
 
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 const expenses = [
@@ -29,6 +30,7 @@ const expenses = [
 function App() {
   return (
     <div>
+      <NewExpense />
       <Expenses elements={expenses}/>
     </div>
     // elements points on expenses array 
