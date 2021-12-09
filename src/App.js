@@ -27,10 +27,16 @@ const expenses = [
   },
 ];
 
+const addExpenseHandler = (expense) => {
+  console.log("In App.js!");
+  console.log(expenses);
+  console.log(expense);
+}
+
 function App() {
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses elements={expenses}/>
     </div>
     // elements points on expenses array 
