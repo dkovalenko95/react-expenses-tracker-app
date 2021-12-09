@@ -12,6 +12,10 @@ function ExpenseItem(props) {
 
   console.log(props.date); /* --> shows exact expenses array from App.js */
 
+  const clickHandler = () => {
+    console.log("Clicked!!!!!!")
+  }
+
   return (
     <Card className="expense-item">
 
@@ -21,6 +25,10 @@ function ExpenseItem(props) {
         <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
+
+      {/* add event listening - execute with special props start with "on", "on" props are like event handlers; in curly braces we point on func that need to execute */}
+      <button onClick={clickHandler}>Change title!</button>
+
   </Card>
   );
 };
