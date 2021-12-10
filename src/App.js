@@ -1,11 +1,9 @@
-
-// import React from 'react'; ---> React import was necessary in the past versions(we had to put this import in every component) --> we can still use it to emphasize that React is still being used under the hood here.
-import React from "react";
+import React, { useState } from "react";
 
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
-const expenses = [
+const INITIAL_EXPENSES = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -27,16 +25,21 @@ const expenses = [
   },
 ];
 
-const addExpenseHandler = (expense) => {
-  console.log("In App.js!");
-  console.log(expenses);
-  console.log(expense);
-}
-
 function App() {
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses]
+    }); /* --> spread("...") operator to conect new expense with prevs ones*/
+    
+    // console.log(INITIAL_EXPENSES);
+    // console.log(expense);
+  }
+
   return (
     <div>
-      <NewExpense onAddExpese={addExpenseHandler}/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses elements={expenses}/>
     </div>
     // elements points on expenses array 
@@ -45,19 +48,3 @@ function App() {
 }
 
 export default App;
-
-
-
-// ALTERNATIVE CODE we would use if we wouldn't use JSX(function App() {return} - as an example)
-
-//  function App() {
-
-  // return React.createElement("div"(1st arg), {here should be attributes of created div}(2nd arg), next arg is a content between opening and closing div tags(can be list of args));
-
-//    return React.createElement(
-//      "div",
-//      {}, 
-//      React.createElement("h2", {}, "Let's get started"),
-//      React.createElement(Expenses, {elements: expenses})
-//    );
-//  };

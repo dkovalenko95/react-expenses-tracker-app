@@ -3,7 +3,6 @@ import React from 'react';
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
-
   const setFilterHandler = (event) => {
     // reaching onChangeYear from Expenses.js via props
     props.onCheckFilter(event.target.value)
@@ -24,7 +23,6 @@ const ExpensesFilter = (props) => {
       </div>
     </div>
   );
-
 };
 
 export default ExpensesFilter;
