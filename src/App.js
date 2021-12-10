@@ -36,7 +36,7 @@ const addExpenseHandler = (expense) => {
 function App() {
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
+      <NewExpense onAddExpese={addExpenseHandler}/>
       <Expenses elements={expenses}/>
     </div>
     // elements points on expenses array 

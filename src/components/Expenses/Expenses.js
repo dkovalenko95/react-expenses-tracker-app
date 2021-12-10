@@ -28,28 +28,43 @@ function Expenses(props) {
       
       That means both the VALUE, as well as CHANGES to the value are not handled in the component itself(ExpensesFilter) but in a parent(Expenses) component. Expenses component controls the ExpensesFilter component.*/}
 
-      <ExpenseItem 
-        title={props.elements[0].title}
-        amount={props.elements[0].amount}
-        date={props.elements[0].date}
-      />
-      <ExpenseItem 
-        title={props.elements[1].title}
-        amount={props.elements[1].amount}
-        date={props.elements[1].date}
-      />
-      <ExpenseItem 
-        title={props.elements[2].title}
-        amount={props.elements[2].amount}
-        date={props.elements[2].date}
-      />
-      <ExpenseItem 
-        title={props.elements[3].title}
-        amount={props.elements[3].amount}
-        date={props.elements[3].date}
-      />
+
+
+      {/* DYNAMIC rendering one ExpenseItem per element in the array */}
+      {/* single curly braces "{}" - means the executing the dynamic expression(where JS expressions can be executed) in JSX code */}
+      {props.elements.map(expenseElem => (
+        <ExpenseItem
+          title={expenseElem.title}
+          amount={expenseElem.amount}
+          date={expenseElem.date}
+        />))}
+      
     </Card>
   );
 }
 
 export default Expenses;
+
+
+
+// STATIC rendering of Expense items
+/* <ExpenseItem 
+title={props.elements[0].title}
+amount={props.elements[0].amount}
+date={props.elements[0].date}
+/>
+<ExpenseItem 
+title={props.elements[1].title}
+amount={props.elements[1].amount}
+date={props.elements[1].date}
+/>
+<ExpenseItem 
+title={props.elements[2].title}
+amount={props.elements[2].amount}
+date={props.elements[2].date}
+/>
+<ExpenseItem 
+title={props.elements[3].title}
+amount={props.elements[3].amount}
+date={props.elements[3].date}
+/> */
