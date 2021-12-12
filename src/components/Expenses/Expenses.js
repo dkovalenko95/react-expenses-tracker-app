@@ -31,13 +31,19 @@ function Expenses(props) {
 
       {/* DYNAMIC rendering one ExpenseItem per element in the array */}
       {/* single curly braces "{}" - means the executing the dynamic expression(where JS expressions can be executed) in JSX code */}
-      {filterExpenses.map((expenseElem) => (
-        <ExpenseItem
-          key={expenseElem.id} /* key - is a prop, some sort of identifier */
-          title={expenseElem.title}
-          amount={expenseElem.amount}
-          date={expenseElem.date}
-        />))}
+
+      {/* rendering CONDITIONAL content */}
+      {filterExpenses.length === 0 ? 
+        (<p>No Expenses found.</p>) : 
+        (filterExpenses.map((expenseElem) => (
+          <ExpenseItem
+            key={expenseElem.id} /* key - is a prop, some sort of identifier */
+            title={expenseElem.title}
+            amount={expenseElem.amount}
+            date={expenseElem.date}
+          />))
+        )
+      }
       
     </Card>
   );
