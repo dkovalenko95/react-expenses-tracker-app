@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import Card from "../UI/Card";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 import "./Expenses.css";
 
@@ -13,8 +13,8 @@ function Expenses(props) {
   const checkFilterHandler = (settedYear) => {
     setSelectedYear(settedYear);
 
-    console.log(selectedYear);
-    console.log(settedYear); // settedYear is a parameter we recieved from filter values
+    // console.log(selectedYear);
+    // console.log(settedYear); // settedYear is a parameter we recieved from filter values
   }
 
   const filterExpenses = props.elements.filter(expense => {
@@ -22,31 +22,13 @@ function Expenses(props) {
   });
 
 
-
-  // rendering CONDITIONAL content
-  // 3nd version - dynamic expression
-  let expenseContent = <p>No Expenses found.</p>;
-
-  if (filterExpenses.length > 0) {
-    expenseContent = filterExpenses.map((expenseElem) => (
-      <ExpenseItem
-        key={expenseElem.id} /* key - is a prop, some sort of identifier */
-        title={expenseElem.title}
-        amount={expenseElem.amount}
-        date={expenseElem.date}
-      />
-    ))
-  }
-
   return (
     <Card className="expenses">
-
       <ExpensesFilter 
         onCheckFilter={checkFilterHandler} 
         selectedValue={selectedYear} 
       />
-      {expenseContent}
-    
+      <ExpensesList expensesItems={filterExpenses}/>
     </Card>
   );
 }

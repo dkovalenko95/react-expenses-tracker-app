@@ -23,7 +23,6 @@ function ExpenseForm(props) {
 
   const submitFormHandler = (event) => {
     event.preventDefault(); /* --> method to cancel web-page reloading after form submit */
-
     const expenseFormData ={
       title: enteredTitle,
       amount: enteredAmount,
