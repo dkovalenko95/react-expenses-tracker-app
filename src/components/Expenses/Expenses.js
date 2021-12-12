@@ -33,16 +33,18 @@ function Expenses(props) {
       {/* single curly braces "{}" - means the executing the dynamic expression(where JS expressions can be executed) in JSX code */}
 
       {/* rendering CONDITIONAL content */}
-      {filterExpenses.length === 0 ? 
-        (<p>No Expenses found.</p>) : 
-        (filterExpenses.map((expenseElem) => (
+      {/* 2nd version - alternative to ternary */}
+      {filterExpenses.length === 0 && <p>No Expenses found.</p>} {/* --> it returns part(2nd condition) after "&&"" operator after 1st condition is met */}
+
+      {filterExpenses.length > 0 && /* --> same rule as at line 37 */
+        filterExpenses.map((expenseElem) => (
           <ExpenseItem
             key={expenseElem.id} /* key - is a prop, some sort of identifier */
             title={expenseElem.title}
             amount={expenseElem.amount}
             date={expenseElem.date}
-          />))
-        )
+          />
+        ))
       }
       
     </Card>
