@@ -21,6 +21,23 @@ function Expenses(props) {
     return expense.date.getFullYear().toString() === selectedYear;
   });
 
+
+
+  // rendering CONDITIONAL content
+  // 3nd version - dynamic expression
+  let expenseContent = <p>No Expenses found.</p>;
+
+  if (filterExpenses.length > 0) {
+    expenseContent = filterExpenses.map((expenseElem) => (
+      <ExpenseItem
+        key={expenseElem.id} /* key - is a prop, some sort of identifier */
+        title={expenseElem.title}
+        amount={expenseElem.amount}
+        date={expenseElem.date}
+      />
+    ))
+  }
+
   return (
     <Card className="expenses">
 
@@ -28,27 +45,12 @@ function Expenses(props) {
         onCheckFilter={checkFilterHandler} 
         selectedValue={selectedYear} 
       />
-
-      {/* DYNAMIC rendering one ExpenseItem per element in the array */}
-      {/* single curly braces "{}" - means the executing the dynamic expression(where JS expressions can be executed) in JSX code */}
-
-      {/* rendering CONDITIONAL content */}
-      {/* 2nd version - alternative to ternary */}
-      {filterExpenses.length === 0 && <p>No Expenses found.</p>} {/* --> it returns part(2nd condition) after "&&"" operator after 1st condition is met */}
-
-      {filterExpenses.length > 0 && /* --> same rule as at line 37 */
-        filterExpenses.map((expenseElem) => (
-          <ExpenseItem
-            key={expenseElem.id} /* key - is a prop, some sort of identifier */
-            title={expenseElem.title}
-            amount={expenseElem.amount}
-            date={expenseElem.date}
-          />
-        ))
-      }
-      
+      {expenseContent}
+    
     </Card>
   );
 }
 
 export default Expenses;
+
+// single curly braces "{}" - means the executing the dynamic expression(where JS expressions can be executed) in JSX code
