@@ -22,8 +22,8 @@ function ExpenseForm(props) {
     event.preventDefault(); /* --> method to cancel web-page reloading after form submit */
     const expenseFormData ={
       title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate)
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
     };
 
     props.onSaveExpenseData(expenseFormData); /* --> func executing in this(ExpenseForm) comp via props(works like pointer in NewExpense and through props passing func here) from NewExpense comp; from child to parent */
